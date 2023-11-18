@@ -25,3 +25,6 @@
 - code just be compiled with 'tsc' package first before running applications
 - once code is compiled, it can be run with node.js runtime as expected
 - code can be compiled & then run with a single command using `ts-node`
+- typescript helps ensure your code is using only the properties that are required
+  - it takes extra time to define typescript limitations within the code
+  - leveraging typescript should translate to cleaner code, if typescript is properly leveraged
