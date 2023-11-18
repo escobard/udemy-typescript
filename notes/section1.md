@@ -20,3 +20,7 @@
   - a pessimistic conclusion is that typescript actually makes code less performant because of the additional compilation step
 - to view how typescript compiles to js, visit typescriptlang.org/play
 - it is best to think of typescript as a friend who is sitting behind you while you are coding
+
+## typescript implementation
+- code just be compiled with 'tsc' package first before running applications
+- once code is compiled, it can be run with node.js runtime as expected
