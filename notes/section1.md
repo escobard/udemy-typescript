@@ -24,3 +24,4 @@
 ## typescript implementation
 - code just be compiled with 'tsc' package first before running applications
 - once code is compiled, it can be run with node.js runtime as expected
+- code can be compiled & then run with a single command using `ts-node`
