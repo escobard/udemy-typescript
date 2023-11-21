@@ -2,8 +2,10 @@
 
 ## what is typescript?
 - essentially just JavaScript with a type system
-  - my interpretation, this is a more "modern" version of lint
+  - my interpretation, this is a more "modern" version of proptypes
     - allows you to set strict coding rules & patterns
+    - allows you to avoid the overhead of having to set proptypes for each component (in react)
+    - allows you to set the expected types for node.js APIs (like proptypes for react)
 - adds a bit more syntax to your course which applies the type system
 
 ## typescript's type system
