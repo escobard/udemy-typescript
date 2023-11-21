@@ -45,7 +45,7 @@ let point: { x: number; y: number; }  = {
 /// (i:number) defines arguments and types for arguments
 /// => void defines what the function returns, in this case nothing
 /*
-actual functionts declaration, syntax broken down
+actual functions declaration, syntax broken down
 const logNumber:
     // define allowed arguments
     (i: number) =>
@@ -59,3 +59,8 @@ const logNumber:
 const logNumber: (i: number) => void = (i: number) => {
     console.log(i);
 }
+
+// When to use Annotations - !IMPORTANT
+// 1) function that returns the any type
+const json = '{"x": 10, "y": 20}';
+const coordinates = JSON.parse(json);

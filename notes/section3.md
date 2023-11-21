@@ -17,3 +17,11 @@
     - we declare a variable on one line then initialize it later
     - when we want a variable to have a type that can't be inferred
     - when a function returns any type and we need to clarify the value
+
+## any type
+- TS does not recognize the type of value that is being returned
+  - ts cannot do any type checking on any types
+- any is a type, just like string or boolean
+- avoid variables with 'any' at all costs!!
+  - this is the reason why we want to use typescript!
+  - the idea is to fix any types with type annotations
