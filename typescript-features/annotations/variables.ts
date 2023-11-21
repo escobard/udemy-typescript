@@ -66,3 +66,15 @@ const json = '{"x": 10, "y": 20}';
 
 // the variable that invokes the function can have a type annotation for the expected return values
 const coordinates: { x: number; y: number;} = JSON.parse(json);
+
+// 2) when we declare a variable on one line and initialize it later
+let words = ['red', 'green', 'blue'];
+/// add type annotation for the expected value of the variable once initialized to avoid any type
+/// a better solution would be to use auto annotation by - let foundWord = false
+let foundWord: boolean;
+
+for (let i = 0; i < words.length;  i++){
+    if (words[i] === 'green'){
+        foundWord = true;
+    }
+}
