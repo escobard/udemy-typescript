@@ -6,7 +6,7 @@ const apples = 5;
 let speed: string = 'fast'
 
 // throws error, assigned value is not a string
-let fast: string = 11
+let fast: number = 11
 
 let hasName: boolean = true;
 
@@ -47,11 +47,11 @@ let point: { x: number; y: number; }  = {
 /*
 actual functions declaration, syntax broken down
 const logNumber:
-    // define allowed arguments
+    // define allowed arguments for the variable
     (i: number) =>
         // define return value
         void =
-    // define arguments and their type
+    // define function arguments and their type
     (i: number) => {
         console.log(i);
 }*/
