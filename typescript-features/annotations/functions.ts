@@ -8,3 +8,13 @@ const add = (a:number, b: number): number => {
 const addNoAReturnAnnotation = (a:number, b: number) => {
     return a + b;
 };
+
+// traditional function annotation
+function divide(a: number, b: number): number {
+    return a / b;
+}
+
+// traditional functional annotation with a constant
+const multiply = function(a: number, b:number): number {
+    return a * b;
+}
