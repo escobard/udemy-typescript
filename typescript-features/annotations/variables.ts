@@ -6,7 +6,7 @@ const apples = 5;
 let speed: string = 'fast'
 
 // throws error, assigned value is not a string
-let fast: string = 11
+let fast: number = 11
 
 let hasName: boolean = true;
 
