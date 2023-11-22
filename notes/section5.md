@@ -6,5 +6,5 @@
 - where ts is useful:
   - can do type inference when extracting values from array
   - can prevent us from adding incompatible values to an array
-  - can get hlp with 'map', 'foreach', 'reduce' functions
+  - can get help with 'map', 'foreach', 'reduce' functions
   - flexible - arrays can still contain multiple different types

@@ -25,3 +25,10 @@ carsByMake.push(100);
 carMakers.map((car: string): string => {
     return car;
 })
+
+// flexible array types - array with two different types
+/// type inference picks up and sets the expected type
+const importantDates = [new Date(), '2030-10-10'];
+
+// annotation for flexible array types
+//const importantDates: (Date | 'string')[] = [new Date(), '2030-10-10'];
