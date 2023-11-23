@@ -23,11 +23,17 @@ class Vehicle {
 
 // a car is a type of vehicle
 class Car extends Vehicle {
-  // child class can overide parent class function
+  // child class must abide by parent class constructor
+  constructor(public wheels: number, color: string){
+    // child class passes color argument to parent class with super()
+    super(color);
+  }
+
+  // child class can override parent class function
   public drive(): void {
     console.log('vroom!');
   }
 }
 
-const vehicle = new Car('red');
+const vehicle = new Car(4, 'red');
 console.log(vehicle.color)
