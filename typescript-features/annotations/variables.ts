@@ -32,7 +32,7 @@ class Car {
 
 }
 
-// ts annotation declares that variable car can only ever be instance of class car
+// ts annotation declares that variable car can only ever be instance of classes car
 let car: Car = new Car();
 
 // object annotation declaration
