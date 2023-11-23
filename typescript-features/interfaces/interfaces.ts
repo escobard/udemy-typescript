@@ -1,14 +1,21 @@
 
 interface Vehicle {
     name: string;
-    year: number;
+    // can use complex value, like a date
+    year: Date;
     broken: boolean;
+    // how to define a function in an interface
+    /// function that returns a string
+    summary(): string;
 }
 
 const oldCivic = {
   name: 'civic',
-  year: 2000,
-  broken: true
+  year: new Date(),
+  broken: true,
+  summary(): string {
+    return `Name: ${this.name}`;
+  }
 };
 
 // very long annotation, how do we fix this? interface!
@@ -19,9 +26,7 @@ const oldCivic = {
 };*/
 
 const printVehicle = (vehicle: Vehicle): void => {
-    console.log(`Name: ${vehicle.name}`);
-    console.log(`Year ${vehicle.year}`);
-    console.log(`Broken? ${vehicle.broken}`);
+    console.log(vehicle.summary());
 };
 
 printVehicle(oldCivic);
