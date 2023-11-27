@@ -1,6 +1,10 @@
 import { faker } from "@faker-js/faker";
+import { Mappable } from "./CustomMap";
 
-export class User {
+// implements creates a dependency between this class and the Mappable interface
+/// tells typescript to ensure the user class has the right properties to implement Mappable interface
+/// doesn't seem to make a difference with webstorm?
+export class User implements Mappable {
   name: string;
   location: {
     lat: number;
