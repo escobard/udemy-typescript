@@ -1,0 +1,24 @@
+{
+  "name": "typescript-random-gmap-marker",
+  "version": "0.0.1",
+  "description": "Typescript application to generate a random gmap user and company",
+  "main": "index.js",
+  "scripts": {
+    "start": "npx parcel index.html",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "typescript",
+    "google",
+    "google-maps"
+  ],
+  "author": "Daniel Escobar",
+  "license": "ISC",
+  "dependencies": {
+    "@faker-js/faker": "^8.3.1",
+    "@types/google.maps": "^3.54.10"
+  },
+  "devDependencies": {
+    "buffer": "^6.0.3"
+  }
+}
