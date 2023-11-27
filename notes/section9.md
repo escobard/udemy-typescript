@@ -12,6 +12,7 @@
 - one class to represent entity that must be interacted with in some way
 - usually do not want to use default statements for typescript
   - to keep all imports with {} brackets
+- using interfaces allows you to re-use and de-couple (and still secure) argument definitions
 
 ## faker package
 - https://github.com/faker-js/faker

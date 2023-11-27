@@ -1,5 +1,10 @@
-import { User } from "./User";
-import { Company } from "./Company";
+// Instructions to every other class on how they can be an argument to addMarker function
+interface Mappable {
+  location: {
+    lat: number;
+    lng: number;
+  }
+}
 
 // carries a reference to google maps, with limited access only
 /// whole purpose is to ensure other engineers only leverage the functions the application is intended to work with
@@ -16,19 +21,36 @@ export class CustomMap {
     });
   }
 
-  addUserMarker(user: User): void {
+  addMarker(mappable: Mappable): void {
     // create a new google maps marker
     new google.maps.Marker({
       // apply it to the google map created by the class
       map: this.googleMap,
       position: {
-        lat: user.location.lat,
-        lng: user.location.lng
+        // ts validates that both User and Company classes have access to class.location
+        lat: mappable.location.lat,
+        lng: mappable.location.lng
       }
     });
   }
+/*
+  // TS goes through both allowed types and checks that the properties in both types are allowed to call class.location
+  /// not an ideal approach, since it required User | Company class types can change
+  /// very tight coupling with addMarker and allowed argument classes, this is where ts interfaces can improve re-usability
+  addMarker(mappable: User | Company): void {
+    // create a new google maps marker
+    new google.maps.Marker({
+      // apply it to the google map created by the class
+      map: this.googleMap,
+      position: {
+        // ts validates that both User and Company classes have access to class.location
+        lat: mappable.location.lat,
+        lng: mappable.location.lng
+      }
+    });
+  }*/
 
-  addCompanyMarker(company: Company): void {
+/*  addCompanyMarker(company: Company): void {
     new google.maps.Marker({
       map: this.googleMap,
       position: {
@@ -36,5 +58,5 @@ export class CustomMap {
         lng: company.location.lng
       }
     })
-  }
+  }*/
 }
