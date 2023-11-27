@@ -23,7 +23,7 @@ export class CustomMap {
 
   addMarker(mappable: Mappable): void {
     // create a new google maps marker
-    new google.maps.Marker({
+    const marker = new google.maps.Marker({
       // apply it to the google map created by the class
       map: this.googleMap,
       position: {
@@ -32,6 +32,14 @@ export class CustomMap {
         lng: mappable.location.lng
       }
     });
+
+    // event listener for when the marker gets clicked
+    marker.addListener('click', () => {
+      const infoWindow = new google.maps.InfoWindow({
+        content: 'Hi there!'
+      })
+      infoWindow.open(this.googleMap, marker)
+    })
   }
 /*
   // TS goes through both allowed types and checks that the properties in both types are allowed to call class.location
