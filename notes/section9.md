@@ -10,6 +10,8 @@
 - one class per file 
   - class files should start with a capital letter
 - one class to represent entity that must be interacted with in some way
+- usually do not want to use default statements for typescript
+  - to keep all imports with {} brackets
 
 ## faker package
 - https://github.com/faker-js/faker
