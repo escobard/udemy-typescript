@@ -1,9 +1,10 @@
 {
-  "name": "typescript-random-gmap-company",
+  "name": "typescript-random-gmap-marker",
   "version": "0.0.1",
   "description": "Typescript application to generate a random gmap user and company",
   "main": "index.js",
   "scripts": {
+    "start": "npx parcel index.html",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
