@@ -17,3 +17,10 @@
 - every iteration it considers each pair of data
 - if the element on the left is greater than the element on the right, bubble sort swaps the order of the elements
 - sorts collection elements from lowest to highest, left to right
+
+## string immutability
+- strings allow individual character seeing with string[0] like arrays
+- strings cannot be mutated like arrays - cannot change string[0] = 'newvalue'
+
+## typeguard
+- clarifies the type of value the code works with
