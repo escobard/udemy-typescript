@@ -7,4 +7,8 @@
 - after code is compiled, you can check that the compiled code works with node.js by running `node build/index.js`
 
 ## tsc commands
-- `tsc - w` - compiles all code continously
+- `tsc - w` - compiles all code continuously
+
+## concurrently shorthands
+- script `concurrently npm:start:*` - grabs & runs all scripts that have 'start' in their name
+- 
