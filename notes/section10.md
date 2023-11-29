@@ -4,3 +4,7 @@
 - build an app that can run directly with the node.js terminal
 - establish base design pattern for modular typescript apps
   - use tsconfig.ts file
+- after code is compiled, you can check that the compiled code works with node.js by running `node build/index.js`
+
+## tsc commands
+- `tsc - w` - compiles all code continously
