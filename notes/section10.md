@@ -11,4 +11,9 @@
 
 ## concurrently shorthands
 - script `concurrently npm:start:*` - grabs & runs all scripts that have 'start' in their name
-- 
+
+## bubble sort algorithm
+- double nested forloop that iterates through collection of data several times 
+- every iteration it considers each pair of data
+- if the element on the left is greater than the element on the right, bubble sort swaps the order of the elements
+- sorts collection elements from lowest to highest, left to right
