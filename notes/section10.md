@@ -5,6 +5,9 @@
 - establish base design pattern for modular typescript apps
   - use tsconfig.ts file
 - after code is compiled, you can check that the compiled code works with node.js by running `node build/index.js`
+- interfaces are useful because we define a contract between one class and another
+  - the class that leverages the interfaces must follow the rules of the interface
+  - this is another way of managing inheritance beyond parent / child classes
 
 ## tsc commands
 - `tsc - w` - compiles all code continuously
