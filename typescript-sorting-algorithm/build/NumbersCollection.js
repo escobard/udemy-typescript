@@ -7,6 +7,7 @@ class NumbersCollection {
     }
     // get allows the reference of length without invoking a function
     // eg, collection.length instead of collection.length()
+    /// get allows you to define the type for this function as a number, instead of a function
     get length() {
         return this.data.length;
     }
