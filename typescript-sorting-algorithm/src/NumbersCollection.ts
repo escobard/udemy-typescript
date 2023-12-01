@@ -1,5 +1,10 @@
-export class NumbersCollection {
-  constructor(public data: number[]){}
+import { Sorter } from './Sorter';
+
+// children classes are bound to the methods from the abstract parent class
+export class NumbersCollection extends Sorter {
+  constructor(public data: number[]){
+    super()
+  }
 
   // get allows the reference of length without invoking a function
   // eg, collection.length instead of collection.length()

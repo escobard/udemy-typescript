@@ -27,3 +27,18 @@
 
 ## typeguard
 - clarifies the type of value the code works with
+
+## abstract classes 
+- TS looks at every class in isolation to ensure that it works independently
+- This can cause weird errors when calling children functions from a parent class
+- abstract class rules:
+  - can't be used to create an object directly
+  - only used as a parent class
+  - can contain real implementation for some methods
+  - the implemented methods can refer to other methods that don't actually exist yet
+  - can make child classes promise to implement some other method
+
+### when to use abstract classes?
+- when a single class must be initiated, but functionality from multiple classes is needed on initiation
+- child initiates parent class constructors on initiation
+- child must contain the abstract methods defined by the parent class to initiate the parent class

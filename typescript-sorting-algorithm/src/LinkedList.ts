@@ -1,3 +1,5 @@
+import {Sorter} from "./Sorter";
+
 class Node {
   // assigned outside of the constructor so it doesn't have to be initiated with the class
   /// next property is initated as null unless a Node class instance is assigned to it
@@ -6,7 +8,8 @@ class Node {
   constructor(public data: number){}
 }
 
-export class LinkedList {
+// if a child class does not define a constructor, super does not have to be invoked
+export class LinkedList extends Sorter{
   head: Node | null = null;
 
   // creates a new node then adds it to the the existing linked list

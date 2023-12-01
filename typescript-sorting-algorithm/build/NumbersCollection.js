@@ -1,8 +1,11 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.NumbersCollection = void 0;
-class NumbersCollection {
+const Sorter_1 = require("./Sorter");
+// children classes are bound to the methods from the abstract parent class
+class NumbersCollection extends Sorter_1.Sorter {
     constructor(data) {
+        super();
         this.data = data;
     }
     // get allows the reference of length without invoking a function

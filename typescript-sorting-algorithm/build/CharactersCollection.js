@@ -1,8 +1,11 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CharactersCollection = void 0;
-class CharactersCollection {
+const Sorter_1 = require("./Sorter");
+class CharactersCollection extends Sorter_1.Sorter {
+    // if a child class defines a constructor, super most be invoked even if the parent does not have construction
     constructor(data) {
+        super();
         this.data = data;
     }
     get length() {

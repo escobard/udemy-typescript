@@ -10,18 +10,22 @@ interface Sortable {
   swap(leftIndex: number, rightIndex: number): void;
 }
 
-export class Sorter {
-  // shorthand to assign a variable to the class via the constructor
-  constructor(public collection: Sortable){}
+// ts does not recognize children class methods and append them to parents
+/// for this, we can use abstract classes
+export abstract class Sorter {
+  // marking methods that must exist during class initiation
+  abstract compare(leftIndex: number, rightIndex: number): boolean;
+  abstract swap(leftIndex: number, rightIndex: number): void
+  abstract length: number;
   sort(): void {
-    const { length } = this.collection;
+    const { length } = this;
 
     for (let i = 0; i< length; i++){
       // i assumes rightmost element will be in the right position
       for (let j = 0; j < length - i - 1; j++){
-        if (this.collection.compare(j, j+1)) {
+        if (this.compare(j, j+1)) {
           // refers to the left element of each pair
-          this.collection.swap(j, j + 1)
+          this.swap(j, j + 1)
         }
       }
     }
