@@ -42,3 +42,18 @@
 - when a single class must be initiated, but functionality from multiple classes is needed on initiation
 - child initiates parent class constructors on initiation
 - child must contain the abstract methods defined by the parent class to initiate the parent class
+
+### interfaces vs classes
+- interfaces:
+  - setup a contract between different classes or functions
+  - use when we have very different objects that we want to work together
+  - promotes loose coupling, by leveraging the interface as the "gateway" for the code
+- abstract classes
+  - sets up a contract between different classes 
+  - use when we are trying to build up a definition of an object
+  - strongly couples classes together
+- takeaways - if the object to be consumed by many classes is very similar, class inheritance is preferred. If the object to be consumed by many classes or functions is different but has similar types, use an interface. to review
+  - interfaces - similar objects with different purposes
+    - eg, in the google maps exercise a user vs a company can be bound to an interface to create the type gateway
+    - want to first try to use interfaces for code re-use, unless there is a use case where objects are really closely related, in this case you can use classes
+  - abstract classes - defining a very similar and related object that should be used my multiple classes.
