@@ -1,15 +1,14 @@
 import fs from "fs";
+import { dateStringToDate } from "./utils";
+import { MatchResult } from "./MatchResult";
+
+// creates a tuple to define an array with a specific order of types
+type MatchData = [Date, string, string, number, number, MatchResult, string];
 
 // TODO - can be re-used to read csv files in the future!
-/// marks class as abstract, or as a blueprint for other classes to follow
-/// <T> argument marks the expected type as a generic
-//// this is a common design pattern for typescript functions & classes
-export abstract class CsvFileReader<T> {
+export class CsvFileReader {
 
-  // marks mapRow function as a required method that must be initialized by child class
-  abstract mapRow(row: string[]): T;
-
-  data: T[] = [];
+  data: MatchData[] = [];
   constructor(public filename: string){}
 
   read(): void {
@@ -27,7 +26,20 @@ export abstract class CsvFileReader<T> {
         return row.split(',')
       })
       // tells readFileSync how to parse each value in each row
-      .map(this.mapRow);
+      .map((row: string[]): MatchData => {
+        // returns an array for each row
+        return [
+          dateStringToDate(row[0]),
+          row[1],
+          row[2],
+          // converts string to number
+          parseInt(row[3]),
+          // converts string to number
+          parseInt(row[4]),
+          // apply enum to MatchResult type
+          row[5] as MatchResult,
+          row[6]
+        ]
+      });
   }
-
-}
+}-
