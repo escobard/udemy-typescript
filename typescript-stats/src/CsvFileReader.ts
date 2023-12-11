@@ -1,4 +1,6 @@
 import fs from "fs";
+import { dateStringToDate } from "./utils";
+import { MatchResult } from "./MatchResult";
 
 // TODO - can be re-used to read csv files in the future!
 export class CsvFileReader {
@@ -17,7 +19,23 @@ export class CsvFileReader {
       .split('\n')
       // tells readFileSync how to parse each line of data
       .map((row: string): string[] => {
+        // splits each row with a comma
         return row.split(',')
+      })
+      // tells readFileSync how to parse each value in each row
+      .map((row: string[]): any => {
+        // returns an array for each row
+        return [
+          dateStringToDate(row[0]),
+          row[1],
+          row[2],
+          // converts string to number
+          parseInt(row[3]),
+          // converts string to number
+          parseInt(row[4]),
+          // apply enum to MatchResult type
+          row[5] as MatchResult
+        ]
       });
   }
 }
