@@ -26,20 +26,21 @@ export class CsvFileReader {
         return row.split(',')
       })
       // tells readFileSync how to parse each value in each row
-      .map((row: string[]): MatchData => {
-        // returns an array for each row
-        return [
-          dateStringToDate(row[0]),
-          row[1],
-          row[2],
-          // converts string to number
-          parseInt(row[3]),
-          // converts string to number
-          parseInt(row[4]),
-          // apply enum to MatchResult type
-          row[5] as MatchResult,
-          row[6]
-        ]
-      });
+      .map(this.mapRow);
   }
+
+  mapRow(row: string[]): MatchData {
+    return [
+      dateStringToDate(row[0]),
+      row[1],
+      row[2],
+      // converts string to number
+      parseInt(row[3]),
+      // converts string to number
+      parseInt(row[4]),
+      // apply enum to MatchResult type
+      row[5] as MatchResult,
+      row[6]
+    ]
+  })
 }
