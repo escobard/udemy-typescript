@@ -2,10 +2,13 @@ import fs from "fs";
 import { dateStringToDate } from "./utils";
 import { MatchResult } from "./MatchResult";
 
+// creates a tuple to define an array with a specific order of types
+type MatchData = [Date, string, string, number, number, MatchResult, string];
+
 // TODO - can be re-used to read csv files in the future!
 export class CsvFileReader {
 
-  data: string[][] = [];
+  data: MatchData[] = [];
   constructor(public filename: string){}
 
   read(): void {
@@ -23,7 +26,7 @@ export class CsvFileReader {
         return row.split(',')
       })
       // tells readFileSync how to parse each value in each row
-      .map((row: string[]): any => {
+      .map((row: string[]): MatchData => {
         // returns an array for each row
         return [
           dateStringToDate(row[0]),
@@ -34,7 +37,8 @@ export class CsvFileReader {
           // converts string to number
           parseInt(row[4]),
           // apply enum to MatchResult type
-          row[5] as MatchResult
+          row[5] as MatchResult,
+          row[6]
         ]
       });
   }
