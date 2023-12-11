@@ -13,4 +13,9 @@
 - use whenever we have a small fixed set of values that are all closely related and known at compile time
   - enum has to be populated at compile time, cannot be populated during run time
   - for example, enum values cannot come from a network request
-  - 
+
+## generics
+- like function arguments, but for types in class/function definitions
+- allows us to define the type of a property/argument/return value at a future point
+- use heavily when writing re-usable code
+- allows for the creation of re-usable function arguments, which can de-couple functions/classes from strong type definitions, nice!
