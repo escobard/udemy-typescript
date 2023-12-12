@@ -1,8 +1,6 @@
 import { dateStringToDate } from "./utils";
 import { MatchResult } from "./MatchResult";
-
-// creates a tuple to define an array with a specific order of types
-type MatchData = [Date, string, string, number, number, MatchResult, string];
+import { MatchData } from "./MatchData";
 
 interface DataReader {
   read(): void;
