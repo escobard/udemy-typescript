@@ -33,7 +33,7 @@
     - changing relationships is easy, since inheritance/class definitions can be swapped out easily without a major refactor to the underlying code
   - does not make sense to use when logical relationship between classes/functions decreases code duplications/sprawl
 
-#### inheritance or composition?
+#### typescript - inheritance or composition?
 - "composition over inheritance" - a famous quote from the book "Design Patterns - Elements of re-usable OO software" for OOP design paradigms that created a holy war in the typescript community 
   - the book encourages "delegation" - leveraging existing objects/classes to improve re-usability, without creating another class.
     - In other words, in true "composition" design, a class can inherit properties from other class, to improve re-use
