@@ -14,6 +14,7 @@ matchReader.load()
 
 const summary = new Summary(
   new WinsAnalysis('Man United'),
+  // new HtmlReport() - change report class to the desired output format - very cool!
   new ConsoleReport()
 )
 
