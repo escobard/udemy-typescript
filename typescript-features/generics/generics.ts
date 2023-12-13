@@ -57,3 +57,33 @@ printAnything<string>(['a', 'b', 'c'])
 /// in this case it gives a warning, since printAnything should not return a value
 let result = printAnything(['a', 'b', 'c'])
 
+// generic constraints
+
+class Car{
+  print(){
+    console.log('I am a car.')
+  }
+}
+
+class House {
+  print(){
+    console.log('I am a house.')
+  }
+}
+
+// using an interface as a generic type
+interface Printable {
+  print(): void;
+}
+
+// expects generic to confirm to Printable interface
+function printHousesOrCars<T extends Printable>(arr: T[]): void {
+  for (let i = 0; i< arr.length; i++){
+    arr[i].print()
+  }
+}
+
+// throws an error, because it expects each array child to satisfy interface
+// printHousesOrCars([1, 2, 3, 4])
+// works as expected because both houses and cars have the required object structure
+printHousesOrCars([new House(), new Car()])
