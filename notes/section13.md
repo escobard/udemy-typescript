@@ -14,3 +14,7 @@
   1. build super class (in this case User) as a mega class with tons of methods
   2. refactor user to use composition
   3. refactor user to be re-usable class that can represent any piece of data, not just user
+
+## when to refactor to interfaces
+- when you are assigning nested type annotations on a function
+  - specially a functional argument that could be re-used
