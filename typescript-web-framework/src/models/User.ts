@@ -57,6 +57,14 @@ export class User {
       console.log('fetch succeeced! response data:', response.data)
     })
   }
+  save(): void {
+    const id = this.get('id')
+    if(id){
+      axios.put(`http://localhost:3000/users/${id}`, this.data)
+    } else {
+      axios.post(`http://localhost:3000/users`, this.data)
+    }
+  }
 }
 
 // inject dynamic type interface into User class
