@@ -54,6 +54,7 @@ export class User {
     axios.get(`http://localhost:3000/users/${this.get('id')}`).then((response: AxiosResponse) => {
       // updates existing user (if it exists) with new data
       this.set(response.data);
+      console.log('fetch succeeced! response data:', response.data)
     })
   }
 }
