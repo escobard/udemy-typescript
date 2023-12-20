@@ -6,7 +6,7 @@ interface UserProps{
   age?: number;
 }
 
-type Callback = () => {}
+type Callback = () => void;
 
 export class User {
 
@@ -30,7 +30,13 @@ export class User {
   // expects a callback function, so a function invocation to be passed
   /// type annotation is a big confusing, so extracting into ts alias Callback
   on(eventName: string, callback: Callback){
+    const handlers = this.events[eventName] || []// Callback[] or undefined
+    handlers.push(callback)
+    this.events[eventName] = handlers;
+  }
 
+  trigger(eventName: string): void {
+    const handlers = this.events[eventName];
   }
 }
 
