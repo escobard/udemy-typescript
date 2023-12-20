@@ -4,7 +4,8 @@
   "description": "Custom web framework built with typescript",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "json-server": "json-server -w db.json"
   },
   "keywords": [
     "typescript",
