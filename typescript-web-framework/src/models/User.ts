@@ -1,9 +1,10 @@
-
+import axios, {AxiosResponse} from "axios";
 interface UserProps{
   // name? syntax marks properties as optional in ts
   /// UserProps interface requirements are met if one or the other property is passed
   name?: string;
   age?: number;
+  id?: number;
 }
 
 type Callback = () => void;
@@ -23,7 +24,8 @@ export class User {
     return this.data[propName]
   }
   set(update: UserProps): void {
-    // copies new object properties over to original object
+    // adds new object to this.data
+    /// copies new object properties over to original object
     Object.assign(this.data, update);
   }
 
@@ -45,6 +47,13 @@ export class User {
 
     handlers.forEach(callback => {
       callback();
+    })
+  }
+
+  fetch(): void {
+    axios.get(`http://localhost:3000/users/${this.get('id')}`).then((response: AxiosResponse) => {
+      // updates existing user (if it exists) with new data
+      this.set(response.data);
     })
   }
 }
