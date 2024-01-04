@@ -12,13 +12,15 @@ export class Sync<T extends HasId> {
   fetch(id: number): AxiosPromise {
     return axios.get(`${this.rootUrl}/${id}`);
   }
-  save(data: T): void {
+
+  // had to change the function to return an AxiosPromise to fix type error in User class
+  save(data: T): AxiosPromise {
     const { id } = data
 
     if(id){
-      axios.put(`${this.rootUrl}/${id}`, data)
+      return axios.put(`${this.rootUrl}/${id}`, data)
     } else {
-      axios.post(this.rootUrl, data)
+      return axios.post(this.rootUrl, data)
     }
   }
 }

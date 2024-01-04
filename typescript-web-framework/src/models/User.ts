@@ -23,7 +23,7 @@ export class User {
   }
 
   // allows for invocation of the on method from events, from the User class, without calling this.events.on() function directly
-  /// get prefix allows for calling a function without actually having to invoke it
+  /// get prefix allows for calling a function without actually having to invoke it or pass arguments
   /// get functions do not require type declarations
   get on(){
     return this.events.on;
@@ -37,7 +37,7 @@ export class User {
   }
   set(update: UserProps): void {
     this.attributes.set(update);
-    this.events.trigger('change');
+    this.trigger('change');
   }
 
   fetch(): void {
@@ -51,6 +51,17 @@ export class User {
       /// interesting use case, sometimes it is best to call the child class directly, but not here
       this.set(response.data);
     })
+  }
+
+  save(): void {
+    this.sync.save(this.attributes.getAll())
+      .then((): void => {
+        this.trigger('save');
+      })
+      .catch((): void => {
+        this.trigger('error');
+      });
+
   }
 }
 
