@@ -1,5 +1,6 @@
 import { Eventing } from './Eventing'
 import { Sync } from "./Sync"
+import { Attributes } from "./Attributes";
 
 export interface UserProps{
   // name? syntax marks properties as optional in ts
@@ -14,20 +15,10 @@ const rootUrl = 'http://localhost:3000/users'
 export class User {
   public events: Eventing = new Eventing();
   public sync: Sync<UserProps> = new Sync<UserProps>(rootUrl);
-
-  // good to extract deep nested type annotations into an interface
-  /// eg, { name: string; age: number } to UserProps interface
-  constructor(private data: UserProps){}
-  // retrieves data from this.data by using propName key as argument
-  get(propName: string): (number | string) {
-    return this.data[propName]
+  public attributes: Attributes<UserProps>;
+  constructor(attrs: UserProps){
+    this.attributes = new Attributes<UserProps>(attrs);
   }
-  set(update: UserProps): void {
-    // adds new object to this.data
-    /// copies new object properties over to original object
-    Object.assign(this.data, update);
-  }
-
 }
 
 // inject dynamic type interface into User class
