@@ -9,11 +9,11 @@ export interface UserProps{
   id?: number;
 }
 
-const rootUrl = 'htt'
+const rootUrl = 'http://localhost:3000/users'
 
 export class User {
   public events: Eventing = new Eventing();
-  public sync: Sync<UserProps> = new Sync<UserProps>();
+  public sync: Sync<UserProps> = new Sync<UserProps>(rootUrl);
 
   // good to extract deep nested type annotations into an interface
   /// eg, { name: string; age: number } to UserProps interface

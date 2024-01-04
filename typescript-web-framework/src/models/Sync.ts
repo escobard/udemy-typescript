@@ -1,7 +1,7 @@
 import axios, { AxiosPromise } from "axios";
 
 interface HasId {
-  id: number;
+  id?: number;
 }
 
 // ts annotation expects T to conform to some form of constraint to understand the possible properties of T
