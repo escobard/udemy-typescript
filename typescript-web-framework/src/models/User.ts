@@ -1,5 +1,7 @@
 import { Eventing } from './Eventing'
-interface UserProps{
+import { Sync } from "./Sync"
+
+export interface UserProps{
   // name? syntax marks properties as optional in ts
   /// UserProps interface requirements are met if one or the other property is passed
   name?: string;
@@ -7,8 +9,11 @@ interface UserProps{
   id?: number;
 }
 
+const rootUrl = 'htt'
+
 export class User {
   public events: Eventing = new Eventing();
+  public sync: Sync<UserProps> = new Sync<UserProps>();
 
   // good to extract deep nested type annotations into an interface
   /// eg, { name: string; age: number } to UserProps interface
