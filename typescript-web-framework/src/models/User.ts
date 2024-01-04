@@ -1,3 +1,5 @@
+import { AxiosResponse } from "axios";
+
 import { Eventing } from './Eventing'
 import { Sync } from "./Sync"
 import { Attributes } from "./Attributes";
@@ -18,6 +20,37 @@ export class User {
   public attributes: Attributes<UserProps>;
   constructor(attrs: UserProps){
     this.attributes = new Attributes<UserProps>(attrs);
+  }
+
+  // allows for invocation of the on method from events, from the User class, without calling this.events.on() function directly
+  /// get prefix allows for calling a function without actually having to invoke it
+  /// get functions do not require type declarations
+  get on(){
+    return this.events.on;
+  }
+
+  get trigger(){
+    return this.events.trigger;
+  }
+  get get(){
+    return this.attributes.get;
+  }
+  set(update: UserProps): void {
+    this.attributes.set(update);
+    this.events.trigger('change');
+  }
+
+  fetch(): void {
+    const id = this.attributes.get('id');
+    if (typeof id !== 'number') {
+      throw new Error('Cannot fetch without an id');
+    }
+
+    this.sync.fetch(id).then((response: AxiosResponse) => {
+      // call this.set from the parent class instead of attributes.set, since we want to trigger a change update
+      /// interesting use case, sometimes it is best to call the child class directly, but not here
+      this.set(response.data);
+    })
   }
 }
 

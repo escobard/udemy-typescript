@@ -6,7 +6,7 @@ export class Attributes<T extends object> {
   /// you can use generics with function definitions too, syntax below
   //// T[K] passes in the K generic into the T generic - K must contain a key that exists in T to work
   ///// once a valid T key is passed into K, the type value attached to the key will be returned
-  get<K extends keyof T>(key: K): T[K] {
+  get = <K extends keyof T>(key: K): T[K] => {
     return this.data[key]
   }
   set(update: T): void {
