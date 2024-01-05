@@ -12,6 +12,7 @@ export interface UserProps{
   id?: number;
 }
 
+// URL to JSON server
 const rootUrl = 'http://localhost:3000/users'
 
 export class User {
@@ -48,7 +49,6 @@ export class User {
 
     this.sync.fetch(id).then((response: AxiosResponse) => {
       // call this.set from the parent class instead of attributes.set, since we want to trigger a change update
-      /// interesting use case, sometimes it is best to call the child class directly, but not here
       this.set(response.data);
     })
   }
@@ -64,6 +64,3 @@ export class User {
 
   }
 }
-
-// inject dynamic type interface into User class
-/// eg, let user = new User<UserProps>()
