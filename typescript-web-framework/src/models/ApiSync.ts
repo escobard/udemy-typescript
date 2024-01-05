@@ -6,7 +6,7 @@ interface HasId {
 
 // ts annotation expects T to conform to some form of constraint to understand the possible properties of T
 /// can be fixed by appending an interface to T so TS annotation follows the given constraints
-export class Sync<T extends HasId> {
+export class ApiSync<T extends HasId> {
   constructor(public rootUrl: string){}
   // returns a promise with the response from the API
   fetch(id: number): AxiosPromise {
