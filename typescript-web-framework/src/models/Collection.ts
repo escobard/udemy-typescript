@@ -1,14 +1,19 @@
 import axios, {AxiosResponse} from 'axios';
 
-import { User, UserProps } from "./User";
 import { Eventing } from "./Eventing";
 
 // act as a browser cache to store data from api
-export class Collection {
+/// can pass multiple generics
+export class Collection<T, K> {
 
-  constructor(public rootUrl: string){}
+  constructor(
+    public rootUrl: string,
+    // allows to dynamically change the data of the Collection class as needed
+    /// in this case, takes UserProps json object and creates User class from it
+    public deserialize: (json: K) => T
+  ){}
 
-  models: User[] = [];
+  models: T[] = [];
   events: Eventing = new Eventing();
 
   // if initializing a function with static declarators (not as constructor arguments), we have to use the get syntax instead of function = this.child.function
@@ -23,9 +28,8 @@ export class Collection {
   fetch(): void {
     // loop through all available users and save them to the collection
     axios.get(this.rootUrl).then((response: AxiosResponse) => {
-      response.data.forEach((value: UserProps) => {
-        const user = User.buildUser(value);
-        this.models.push(user);
+      response.data.forEach((value: K) => {
+        this.models.push(this.deserialize(value));
       })
     })
     this.trigger('change')
