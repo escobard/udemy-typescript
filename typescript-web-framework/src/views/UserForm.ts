@@ -19,10 +19,10 @@ export class UserForm {
     // must contain correct HTML DOM events
     /// full list of HTML DOM events https://www.w3schools.com/jsref/dom_obj_event.asp
     return {
-      'click:.set-age': this.onSetAgeClick
+      'click:.set-age': this.onSetAgeClick,
+      'click:.set-name': this.onSetNameClick
     }
   }
-
 
   // remember to use arrow functions with children class that refer to another class!!
   /// otherwise this.model is undefined, because it comes from a constructor class
@@ -30,14 +30,23 @@ export class UserForm {
     this.model.setRandomAge()
   }
 
-  template(): string{
+  onSetNameClick = (): void => {
+    const input = this.parent.querySelector('input');
+
+    // extracts values out of input
+    const name = input.value;
+
+    this.model.set({ name });
+  }
+
+  template(): string {
     return `
       <div>
         <h1>User Form</h1>
         <div>User name: ${this.model.get('name')}</div>
         <div>User age: ${this.model.get('age')}</div>
         <input />
-        <button>Click me</button>
+        <button class="set-name">Change name</button>
         <button class="set-age">Set Random Age</button>
       </div>
     `;
