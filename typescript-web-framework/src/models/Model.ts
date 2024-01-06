@@ -23,21 +23,23 @@ interface HasId {
 }
 
 export class Model<T extends HasId> {
+  // in JS, assigning arguments as variables in the constructor, assigns them to .this before any methods
+  /// assigning values in the constructor body, assigns them to .this after a method! this can cause errors, big gotcha
   constructor(private attributes: ModelAttributes<T>, private events: Events, private sync: Sync<T>){}
 
   // allows for invocation of the on method from events, from the User class, without calling this.events.on() function directly
   /// get prefix allows for calling a function without actually having to invoke it or pass arguments
   /// get functions do not require type declarations
-  get on(){
-    return this.events.on;
-  }
+  on = this.events.on;
 
-  get trigger(){
-    return this.events.trigger;
-  }
-  get get(){
-    return this.attributes.get;
-  }
+  // syntax abbreviated with the js class shorthand function = value
+  /*  get trigger(){
+      return this.events.on;
+    }*/
+  trigger = this.events.trigger;
+
+  get = this.attributes.get;
+
   set(update: T): void {
     this.attributes.set(update);
     this.trigger('change');

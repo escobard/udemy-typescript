@@ -17,6 +17,7 @@ const rootUrl = 'http://localhost:3000/users'
 export class User extends Model<UserProps> {
 
   // build a user object from the required parameters inherited from parent class Model
+  /// static functions can be used to initiate a class
   static buildUser(attrs: UserProps): User {
     return new User(
       new Attributes<UserProps>(attrs),
@@ -24,5 +25,18 @@ export class User extends Model<UserProps> {
       new ApiSync<UserProps>(rootUrl)
     )
   }
+
+  // can then build other static build functions and swap out the three arguments, like data sources, such as
+  /*
+    static buildLocalUser(attrs: UserProps): User {
+          return new User(
+          new Attributes<UserProps>(attrs),
+          new Eventing(),
+          // fetches data from local storage instead of ApiSync's json server
+          new LocalSync<UserProps>(rootUrl)
+    )
+
+    }
+   */
 
 }
