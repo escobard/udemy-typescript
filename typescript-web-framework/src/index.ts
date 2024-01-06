@@ -1,9 +1,6 @@
-import { User } from "./models/User";
+import { UserForm } from './views/UserForm'
 
-const collection = User.buildUserCollection();
+// pass in the parent element identifier, which UserForm uses to render HTML within
+const userForm = new UserForm(document.getElementById('root'))
 
-collection.on('change', () => {
-  console.log(collection)
-});
-
-collection.fetch();
+userForm.render()
