@@ -1,19 +1,23 @@
+import { User } from "../models/User";
+
 export class UserForm {
   // can determine HTML specific types with TS, cool!
   /// Element type refers to any HTML that we want to render
   //// there are more specific HTML types to explore
-  constructor(public parent: Element) {}
+  constructor(public parent: Element, public model: User) {}
 
   // sets up event handlers for when the button is clicked
   eventsMap(): { [key: string] : () => void } {
     // must contain correct HTML DOM events
     /// full list of HTML DOM events https://www.w3schools.com/jsref/dom_obj_event.asp
     return {
-      'click:button': this.onButtonClick
+      'click:.set-age': this.onSetAgeClick
     }
   }
 
-  onButtonClick(): void {
+
+
+  onSetAgeClick(): void {
     console.log('Hi there');
   }
 
@@ -21,8 +25,11 @@ export class UserForm {
     return `
       <div>
         <h1>User Form</h1>
+        <div>User name: ${this.model.get('name')}</div>
+        <div>User age: ${this.model.get('age')}</div>
         <input />
         <button>Click me</button>
+        <button class="set-age">Set Random Age</button>
       </div>
     `;
   }
