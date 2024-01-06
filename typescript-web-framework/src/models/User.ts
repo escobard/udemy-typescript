@@ -2,6 +2,7 @@ import { Model } from "./Model";
 import { Attributes } from './Attributes';
 import { ApiSync} from './ApiSync';
 import { Eventing } from './Eventing'
+import { Collection } from "./Collection";
 
 export interface UserProps{
   // name? syntax marks properties as optional in ts
@@ -24,6 +25,14 @@ export class User extends Model<UserProps> {
       new Eventing(),
       new ApiSync<UserProps>(rootUrl)
     )
+  }
+
+  // allows to abstract Collection class creation through User class,
+  /// can create User collection with const collection = User.buildUserCollection();
+  //// instead of the nasty const collection = new Collection<User, UserProps>(rootUrl, (json:UserProps) => User.buildUser(json))
+  static buildUserCollection(): Collection<User, UserProps> {
+    // creates new collection passing dynamic generics User and UserProps
+    return new Collection<User, UserProps>(rootUrl, (json: UserProps) => User.buildUser(json))
   }
 
   // can then build other static build functions and swap out the three arguments, like data sources, such as
