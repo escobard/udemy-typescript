@@ -1,10 +1,11 @@
-import { User } from "./models/User";
+import {Collection} from "./models/Collection";
 
-// initiates function with an object that fits UserProps interface
-const user = User.buildUser({ id: 1 })
+const rootUrl = 'http://localhost:3000/users'
 
-user.on('change', () => {
-  console.log(user)
+const collection = new Collection(rootUrl)
+
+collection.on('change', () => {
+  console.log(collection)
 });
 
-user.fetch()
+collection.fetch();
