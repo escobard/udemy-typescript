@@ -1,5 +1,8 @@
 import { User } from "../models/User";
 
+// refactoring userform using composition would create a bilateral relationship (meaning both classes are dependent on each other) between two classes, making composition not ideal
+// inheritance creates a linear relationship (parent / child) which is much simpler and cleaner to understand, inheritance is ideal
+/// remember, try to go for what is simpler to understand / work with for developers!
 export class UserForm {
   // can determine HTML specific types with TS, cool!
   /// Element type refers to any HTML that we want to render
@@ -12,6 +15,21 @@ export class UserForm {
     this.model.on('change', () => {
       this.render()
     })
+  }
+
+
+  bindEvents(fragment: DocumentFragment): void{
+    const eventsMap = this.eventsMap();
+
+    for (let eventKey in eventsMap){
+      const [eventName, selector] = eventKey.split(':');
+
+      // finds the event that matches fragment argument
+      /// attaches event listener to the appropriate elements
+      fragment.querySelectorAll(selector).forEach(element => {
+        element.addEventListener(eventName, eventsMap[eventKey])
+      })
+    }
   }
 
   // sets up event handlers for when the button is clicked
@@ -55,19 +73,6 @@ export class UserForm {
     `;
   }
 
-  bindEvents(fragment: DocumentFragment): void{
-    const eventsMap = this.eventsMap();
-
-    for (let eventKey in eventsMap){
-      const [eventName, selector] = eventKey.split(':');
-
-      // finds the event that matches fragment argument
-      /// attaches event listener to the appropriate elements
-      fragment.querySelectorAll(selector).forEach(element => {
-        element.addEventListener(eventName, eventsMap[eventKey])
-      })
-    }
-  }
 
   render(): void {
 
