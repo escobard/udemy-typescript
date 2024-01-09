@@ -33,10 +33,13 @@ export class UserForm {
   onSetNameClick = (): void => {
     const input = this.parent.querySelector('input');
 
-    // extracts values out of input
-    const name = input.value;
+    // name variable should be protected with a traditional type guard to avoid strict null checks
+    /// this means that no variable is allowed to be null on any conditional case
+    if (input) {
+      const name = input.value;
 
-    this.model.set({ name });
+      this.model.set({ name })
+    }
   }
 
   template(): string {
