@@ -12,8 +12,13 @@ export class UserForm extends View<User, UserProps> {
     /// full list of HTML DOM events https://www.w3schools.com/jsref/dom_obj_event.asp
     return {
       'click:.set-age': this.onSetAgeClick,
-      'click:.set-name': this.onSetNameClick
+      'click:.set-name': this.onSetNameClick,
+      'click:.save-model': this.onSaveClick
     }
+  }
+
+  onSaveClick = (): void => {
+    this.model.save()
   }
 
   // remember to use arrow functions with children class that refer to another class!!
@@ -37,11 +42,10 @@ export class UserForm extends View<User, UserProps> {
   template(): string {
     return `
       <div>
-        <div>User name: ${this.model.get('name')}</div>
-        <div>User age: ${this.model.get('age')}</div>
-        <input />
+        <input placeholder="${ this.model.get('name') }"/>
         <button class="set-name">Change name</button>
         <button class="set-age">Set Random Age</button>
+        <button class="save-model">Save User</button>
       </div>
     `;
   }
