@@ -12,9 +12,13 @@ export abstract class View<T extends Model<K>, K extends HasId> {
     this.bindModel()
   }
 
-  // tells events map that this function will eventually have these methods
-  abstract eventsMap(): { [key: string]: () => void };
+  // tells this class that it will require any child class to have these methods attached to it
   abstract template(): string;
+
+  // tells this class that an eventsMap function might be implemented by a child class
+  eventsMap(): { [key: string]: () => void } {
+    return {}
+  };
 
   bindModel(): void {
     // with a generic, a constraint is needed to ensure whatever generic is used at contains this.on()
