@@ -1,10 +1,10 @@
-import { User } from "../models/User";
+import { User, UserProps } from "../models/User";
 import { View } from "./View";
 
 // refactoring userform using composition would create a bilateral relationship (meaning both classes are dependent on each other) between two classes, making composition not ideal
 // inheritance creates a linear relationship (parent / child) which is much simpler and cleaner to understand, inheritance is ideal
 /// remember, try to go for what is simpler to understand / work with for developers!
-export class UserForm extends View {
+export class UserForm extends View<User, UserProps> {
 
   // sets up event handlers for when the button is clicked
   eventsMap(): { [key: string] : () => void } {
@@ -37,7 +37,6 @@ export class UserForm extends View {
   template(): string {
     return `
       <div>
-        <h1>User Form</h1>
         <div>User name: ${this.model.get('name')}</div>
         <div>User age: ${this.model.get('age')}</div>
         <input />

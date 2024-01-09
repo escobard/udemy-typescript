@@ -1,10 +1,14 @@
-import { User } from "../models/User";
+import { HasId, Model } from "../models/Model";
 
-export abstract class View {
+// syntax below passes two generics into View class,
+/// second generic is passed as an argument to first generic, making the first generic require the properties of the second generic loaded into it's class
+/// T (first argument) must have the properties of Model<K>, K (second argument) to work
+//// K (second argument) must contain an ID as specified by the Model class - complete soup of code
+export abstract class View<T extends Model<K>, K extends HasId> {
   // can determine HTML specific types with TS, cool!
   /// Element type refers to any HTML that we want to render
   //// there are more specific HTML types to explore
-  constructor(public parent: Element, public model: User) {
+  constructor(public parent: Element, public model: T) {
     this.bindModel()
   }
 
@@ -13,6 +17,7 @@ export abstract class View {
   abstract template(): string;
 
   bindModel(): void {
+    // with a generic, a constraint is needed to ensure whatever generic is used at contains this.on()
     this.model.on('change', () => {
       this.render()
     })

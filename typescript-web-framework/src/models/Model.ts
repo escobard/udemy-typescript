@@ -18,7 +18,7 @@ interface Events {
 }
 
 // can use an interface to extend a generic model with additional types T must contain
-interface HasId {
+export interface HasId {
   id?: number
 }
 
