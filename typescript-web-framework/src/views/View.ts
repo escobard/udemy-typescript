@@ -34,7 +34,7 @@ export abstract class View<T extends Model<K>, K extends HasId> {
     })
   }
 
-  bindEvents(fragment: DocumentFragment): void{
+  bindEvents(fragment: DocumentFragment): void {
     const eventsMap = this.eventsMap();
 
     for (let eventKey in eventsMap){
@@ -57,8 +57,11 @@ export abstract class View<T extends Model<K>, K extends HasId> {
       if (element){
         this.regions[key] =  element;
       }
-
     }
+  }
+
+  onRender(): void {
+
   }
 
   render(): void {
@@ -73,6 +76,8 @@ export abstract class View<T extends Model<K>, K extends HasId> {
     // binds elements to the HTML DOM
     this.bindEvents(templateElement.content)
     this.mapRegions(templateElement.content)
+
+    this.onRender();
 
     this.parent.append(templateElement.content);
   }
