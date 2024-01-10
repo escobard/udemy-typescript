@@ -5,6 +5,8 @@ import { HasId, Model } from "../models/Model";
 /// T (first argument) must have the properties of Model<K>, K (second argument) to work
 //// K (second argument) must contain an ID as specified by the Model class - complete soup of code
 export abstract class View<T extends Model<K>, K extends HasId> {
+  regions: { [key: string]: Element } = {}
+
   // can determine HTML specific types with TS, cool!
   /// Element type refers to any HTML that we want to render
   //// there are more specific HTML types to explore
@@ -14,6 +16,11 @@ export abstract class View<T extends Model<K>, K extends HasId> {
 
   // tells this class that it will require any child class to have these methods attached to it
   abstract template(): string;
+
+  // returns a map of each HTML region to render on the screen
+  regionsMap(): { [key: string]: string } {
+    return {}
+  }
 
   // tells this class that an eventsMap function might be implemented by a child class
   eventsMap(): { [key: string]: () => void } {
@@ -40,6 +47,20 @@ export abstract class View<T extends Model<K>, K extends HasId> {
       })
     }
   }
+
+  mapRegions(fragment: DocumentFragment): void {
+    const regionsMap = this.regionsMap();
+
+    for( let key in regionsMap) {
+      const selector = regionsMap[key];
+      const element = fragment.querySelector(selector)
+      if (element){
+        this.regions[key] =  element;
+      }
+
+    }
+  }
+
   render(): void {
 
     // empties out the parent element per render
@@ -51,6 +72,7 @@ export abstract class View<T extends Model<K>, K extends HasId> {
 
     // binds elements to the HTML DOM
     this.bindEvents(templateElement.content)
+    this.mapRegions(templateElement.content)
 
     this.parent.append(templateElement.content);
   }
