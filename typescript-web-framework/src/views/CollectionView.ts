@@ -15,7 +15,7 @@ export abstract class CollectionView<T, K> {
       this.renderItem(model, itemParent);
       templateElement.content.append(itemParent);
     }
-
+    console.log(this.collection.models)
     this.parent.append(templateElement.content);
   }
 }

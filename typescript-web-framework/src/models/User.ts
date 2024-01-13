@@ -4,7 +4,7 @@ import { ApiSync} from './ApiSync';
 import { Eventing } from './Eventing'
 import { Collection } from "./Collection";
 
-export interface UserProps{
+export interface UserProps {
   // name? syntax marks properties as optional in ts
   /// UserProps interface requirements are met if one or the other property is passed
   name?: string;

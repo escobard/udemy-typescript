@@ -6,6 +6,9 @@ import { Eventing } from "./Eventing";
 /// can pass multiple generics
 export class Collection<T, K> {
 
+  models: T[] = [];
+  events: Eventing = new Eventing();
+
   constructor(
     public rootUrl: string,
     // allows to dynamically change the data of the Collection class as needed
@@ -13,8 +16,6 @@ export class Collection<T, K> {
     public deserialize: (json: K) => T
   ){}
 
-  models: T[] = [];
-  events: Eventing = new Eventing();
 
   // if initializing a function with static declarators (not as constructor arguments), we have to use the get syntax instead of function = this.child.function
   get on(){
@@ -31,7 +32,9 @@ export class Collection<T, K> {
       response.data.forEach((value: K) => {
         this.models.push(this.deserialize(value));
       })
+
+      // huge gotcha - trigger event has to happen in the .then chain or interface will not be updated once data is fetched!
+      this.trigger('change')
     })
-    this.trigger('change')
   }
 }
