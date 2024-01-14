@@ -3,6 +3,7 @@
 //// in extreme cases, libraries do not have TS types and we have to build our own
 import express, { Request, Response } from 'express';
 import { router } from "./routes/loginRoutes";
+import bodyParser from "body-parser";
 
 const app = express();
 
@@ -18,6 +19,8 @@ app.get('/', (req: Request, res: Response) => {
 })
 */
 
+// required so json content from form can be parsed and used by express
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(router)
 
 app.listen(3000, () => {
