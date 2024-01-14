@@ -17,3 +17,8 @@
     - when these use cases come up, consider NOT using TS and waiting until an adapter library is released
     - if completely necessary, caution against this approach due to it's hacky nature, and high possibility of having to be retired for adapter libraries in the future
 - the course will focus on approach 3 and 2, approach 1 has been covered already with prior lessons
+
+## app overview
+- basic login page with authentication
+- basic protected page with authorization
+  - shows denied if the user is not logged in 
