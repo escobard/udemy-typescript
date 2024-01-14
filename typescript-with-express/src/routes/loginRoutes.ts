@@ -26,7 +26,7 @@ router.get('/login', (req: Request, res: Response): void => {
   `)
 });
 
-router.post('/login', (req: RequestWithBody, res: Response) => {
+router.post('/login', (req: RequestWithBody, res: Response): void => {
   // using TS with middlewares is challenging, since middlewares do not have deep information on exactly what types are in use / will be returned
   /// there are no TS errors on the line before, even if bodyParser is enabled or disabled since req.property is by default allowed, marked as an any type
   //// whoever wrote the express type definitions assumed bodyParser would be in place!!! that is why TS allows req.body
@@ -45,5 +45,24 @@ router.post('/login', (req: RequestWithBody, res: Response) => {
   }
 
 });
+
+// not best practice but useful to get things going for now
+router.get('/', (req: RequestWithBody, res: Response): void => {
+  if (req.session && req.session.loggedIn){
+    res.send(`
+      <div>
+        <div>You are logged in</div>
+        <a href="/logout">Logout</a>
+      </div>
+    `)
+  } else {
+    res.send(`
+     <div>
+        <div>You are not logged in</div>
+        <a href="/login">Logout</a>
+      </div>
+    `)
+  }
+})
 
 export { router }
