@@ -26,6 +26,18 @@
 - pros:
   - addressing these type issues with typescript can force us to write better code
 
+#### how / when should we twist JS lib to work with TS or in a class based approach?
+- there must be at least one of two positive outcomes to this refactor:
+  - either get better type safety (help TS identify errors more easily)
+  - significantly enhance developer experience
+- easy option - stick a bunch of library code into classes
+  - can be done easily but requires heavy maintenance and in house context to work with
+  - NOT the recommended approach to twist JS libraries to work with TS
+  - this code is not easier to understand or to write 
+    - because it requires knowledge of the custom class and the JS libraries
+- hard option - stick a bunch of library code into classes + use some advanced features of TS
+  - this option should yield at least one of the two positive benefits listed above
+
 ## app overview
 - basic login page with authentication
 - basic protected page with authorization
