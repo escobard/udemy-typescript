@@ -32,13 +32,18 @@ router.post('/login', (req: RequestWithBody, res: Response) => {
   //// whoever wrote the express type definitions assumed bodyParser would be in place!!! that is why TS allows req.body
   const { email, password } = req.body;
 
-  if (email && password){
-    res.send(email + password);
+  if (email && password && email ==='hi@hi.com' && password ==='password'){
+    // log this person in
+    /// creates a session with a cookie, express & cookie-session manage all session management with browser cookies
+    req.session = { loggedIn: true}
+
+    // redirect them to the root route
+    res.redirect('/')
   } else {
     res.status(422);
     res.send('You must provide an email and a password');
   }
 
-})
+});
 
 export { router }

@@ -4,6 +4,7 @@
 import express, { Request, Response } from 'express';
 import { router } from "./routes/loginRoutes";
 import bodyParser from "body-parser";
+import cookieSession from 'cookie-session';
 
 const app = express();
 
@@ -22,6 +23,7 @@ app.get('/', (req: Request, res: Response) => {
 // required so json content from form can be parsed and used by express
 /// TS uses body parser to add a Request.body property to express's Request object
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(cookieSession({ keys: ['some-string']}))
 app.use(router)
 
 app.listen(3000, () => {
