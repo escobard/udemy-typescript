@@ -18,7 +18,16 @@
     - if completely necessary, caution against this approach due to it's hacky nature, and high possibility of having to be retired for adapter libraries in the future
 - the course will focus on approach 3 and 2, approach 1 has been covered already with prior lessons
 
+### twist your lib to work with TS classes
+- cons:
+  - type definition files alone can't express what is going on in the JS world accurately (example: middleware)
+  - type definition files provided to use aren't always accurate
+  - inputs to a server (or any program with external inputs) are not guaranteed to exist, or be of the correct type
+- pros:
+  - addressing these type issues with typescript can force us to write better code
+
 ## app overview
 - basic login page with authentication
 - basic protected page with authorization
   - shows denied if the user is not logged in 
+- leveraging approach #3, doing our best to twist the library to work with TS
