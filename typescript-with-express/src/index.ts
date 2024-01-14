@@ -20,6 +20,7 @@ app.get('/', (req: Request, res: Response) => {
 */
 
 // required so json content from form can be parsed and used by express
+/// TS uses body parser to add a Request.body property to express's Request object
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(router)
 

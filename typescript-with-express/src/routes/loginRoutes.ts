@@ -19,6 +19,9 @@ router.get('/login', (req: Request, res: Response): void => {
 });
 
 router.post('/login', (req: Request, res: Response) => {
+  // using TS with middlewares is challenging, since middlewares do not have deep information on exactly what types are in use / will be returned
+  /// there are no TS errors on the line before, even if bodyParser is enabled or disabled since req.property is by default allowed, marked as an any type
+  //// whoever wrote the express type definitions assumed bodyParser would be in place!!! that is why TS allows req.body
   const { email, password } = req.body;
 
   res.send(email + password);
