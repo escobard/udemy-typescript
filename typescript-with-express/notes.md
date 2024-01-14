@@ -37,6 +37,8 @@
     - because it requires knowledge of the custom class and the JS libraries
 - hard option - stick a bunch of library code into classes + use some advanced features of TS
   - this option should yield at least one of the two positive benefits listed above
+  - requires the use of decorators
+  - a lot of TS helper libraries (approach #2) build TS declarators to make TS / JS lib integration easier and more readable 
 
 ## app overview
 - basic login page with authentication
