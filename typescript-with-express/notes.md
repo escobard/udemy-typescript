@@ -45,3 +45,12 @@
 - basic protected page with authorization
   - shows denied if the user is not logged in 
 - leveraging approach #3, doing our best to twist the library to work with TS
+
+# TS compiles into TS prototype system
+- JavaScript does not have actual classes!
+- JS compiles class code into functional code that can be run on the browser
+  - write some code on typescriptlang.org/play
+  - copy the transpiled code to the browser console and play around!
+- prototype is where all JS methods are attached to 
+- methods can be added to the prototype even after class object has been created - this is unique to JS!
+- 
