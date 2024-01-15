@@ -1,11 +1,12 @@
 import { Request, Response } from "express";
+import { get } from './decorators/routes';
 
 // we want to create a class declarator for the prefix/parent route path for the controller
 // @controller('/')
 class LoginController {
 
-  // we want to create a decorator for the route path
-  // @get('/login')
+  // we want to create a decorator that passes the route's pass to the method
+  @get('/login')
   getLogin(req: Request, res: Response): void {
     res.send(`
       <form method="POST">
