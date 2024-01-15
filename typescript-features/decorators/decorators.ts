@@ -1,6 +1,7 @@
 // we can use a decorator on class properties/methods/accessors
 /// class below has one of each properties/methods/accessors
 class Boat {
+  @testDecorator
   color: string = 'red';
 
   get formattedColor(): string {
@@ -32,6 +33,14 @@ class Boat {
 //     }
 //   }
 // }
+
+// syntax for decorator for class property
+/// decorators for properties is very limited, since properties are not attached to JS prototypes
+//// in other words, decorators cannot access the value of properties
+function testDecorator(target: any, key: string) {
+  console.log(target);
+  console.log(key)
+}
 
 // syntax for declarator function factory
 /// essentially a higher order function, which passes additional arguments to declarator function
