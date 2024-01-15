@@ -1,11 +1,13 @@
 import 'reflect-metadata';
-import express from 'express';
-
-export const router = express.Router();
+import { AppRouter } from "../../AppRouter";
 
 export function controller(routePrefix: string) {
   // applies generic Function type to target, which expects the constructor property of a class
   return function(target: Function): void {
+
+    // calls express router instance from AppRouter class
+    const router = AppRouter.getInstance();
+
     for (let key in target.prototype) {
       // assumes every method in the controller class manages a route / is a route handler
       const routeHandler = target.prototype[key];
