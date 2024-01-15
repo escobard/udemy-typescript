@@ -1,9 +1,13 @@
 // we can use a decorator on class properties/methods/accessors
 /// class below has one of each properties/methods/accessors
+
+// syntax to invoke a class decorator
+@classDecorator
 class Boat {
   @testDecorator
   color: string = 'red';
 
+  @testDecorator
   get formattedColor(): string {
     return `This boats color is ${this.color}`;
   }
@@ -11,10 +15,32 @@ class Boat {
   // syntax for declarator function definition
   /// requires experimentalDecorators & emitDecoratorMetadata TS options enabled
   @logError('Oops, boat was sunk in the ocean')
-  pilot(): void {
+  error(): void {
     throw new Error();
     console.log('swish');
   }
+
+  // syntax to apply a ts parameter decorator
+  pilot(@parameterDecorator speed: string, @parameterDecorator generateWake: boolean): void {
+    if (speed === 'fast'){
+      console.log('swish')
+    } else {
+      console.log('nothing')
+    }
+  }
+}
+
+// syntax for a declarator used or a class definition / constructor
+function classDecorator(constructor: typeof Boat) {
+  console.log(constructor)
+}
+
+
+// syntax for declarator that changes a function's argument/parameter
+/// each parameter has a key and index
+/// used to identify the parameters that are being used in a function, use case is not totally clear yet
+function parameterDecorator(target: any, key: string, index: number){
+  console.log(key, index)
 }
 
 // syntax for base decorator function
@@ -62,4 +88,4 @@ function logError(errorMessage: string) {
 }
 
 
-new Boat().pilot()
+new Boat().pilot('slow', false)
