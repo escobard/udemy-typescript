@@ -9,17 +9,28 @@ class Boat {
 
   // syntax for declarator function definition
   /// requires experimentalDecorators & emitDecoratorMetadata TS options enabled
-  @testDecorator
+  @logError
   pilot(): void {
+    throw new Error();
     console.log('swish');
   }
 }
 
 // syntax for base decorator function
 /// first argument is the prototype of the object, second argument is the key of the property on the object, third argument is the property descriptor
-function testDecorator(target: any, key: string): void {
-  // logs the Class.prototype object, which has access to properties/methods/accessors
-  console.log('Target:', target);
-  // logs the key of the method next to the decorator
-  console.log('Key:', key);
+function logError(target: any, key: string, desc: PropertyDescriptor): void {
+  // attaches the function body to const method
+  const method = desc.value;
+
+  // defines another value to the function, intercepting call to the original method
+  /// original method is still runs as expected
+  desc.value = function () {
+    try {
+      method();
+    } catch(e){
+      console.log('Oops boat was sunk')
+    }
+  }
 }
+
+new Boat().pilot()

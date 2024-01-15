@@ -9,5 +9,11 @@
 - first argument is the prototype of the object 
 - second argument is the key of the property on the object
 - third argument is the property descriptor
+  - object that has configuration options for properties on another object
+  - can be used to determine how class methods can behave
+  - has writable flag, determine if property can be changed
+  - enumerable flag, determine if property can be looper through
+  - value, current value
+  - configurable, definition can be changed and property can be deleted
 - decorators are applied only once (when the class is created)
   - not when an instance of a class is created
