@@ -1,9 +1,10 @@
 import { Request, Response } from "express";
 import { get } from './decorators/routes';
+import { controller } from "./decorators/controller";
 
 // we want to create a class declarator for the prefix/parent route path for the controller
-// @controller('/')
-class LoginController {
+@controller('/auth')
+export class LoginController {
 
   // we want to create a decorator that passes the route's pass to the method
   @get('/login')

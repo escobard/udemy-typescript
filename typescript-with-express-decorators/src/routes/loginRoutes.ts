@@ -22,22 +22,6 @@ function requireAuth(req: Request, res: Response, next: NextFunction): void {
 
 const router = Router()
 
-router.get('/login', (req: Request, res: Response): void => {
-  res.send(`
-    <form method="POST">
-        <div>
-            <label>Email</label>
-            <input name="email" />
-        </div>
-        <div>
-            <label>Password</label>
-            <input name="password" type="password"/>
-        </div>
-        <button>Submit</button>
-    </form>
-  `)
-});
-
 router.post('/login', (req: RequestWithBody, res: Response): void => {
   // using TS with middlewares is challenging, since middlewares do not have deep information on exactly what types are in use / will be returned
   /// there are no TS errors on the line before, even if bodyParser is enabled or disabled since req.property is by default allowed, marked as an any type

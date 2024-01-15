@@ -1,13 +1,23 @@
 import 'reflect-metadata';
+import express from 'express';
 
-export function controller(routePrefix: string): {} {
+export const router = express.Router();
+
+export function controller(routePrefix: string) {
   // applies generic Function type to target, which expects the constructor property of a class
   return function(target: Function): void {
     for (let key in target.prototype) {
+      // assumes every method in the controller class manages a route / is a route handler
       const routeHandler = target.prototype[key];
 
-      // checks to see if the method key has the path metadata key
+      // tries to find method key has the path metadata key
       const path = Reflect.getMetadata('path', target.prototype, key);
+
+      // checks to see if the method key has the path metadata key
+      if (path) {
+        // assigns route path and route handler function to express.Router.get
+        router.get(`${routePrefix}${path}`, routeHandler)
+      }
     }
   }
 }
