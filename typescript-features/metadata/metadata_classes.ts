@@ -1,5 +1,6 @@
 import 'reflect-metadata'
 
+@printMetadata
 class Plane {
   color: string = 'red'
 
@@ -16,6 +17,17 @@ function markFunction(secretInfo: string) {
     Reflect.defineMetadata('secret', secretInfo, target, key);
   };
 
+}
+
+// declarators for class must specify the constructor function of the class as an argument
+/// typeof Class - returns the class' constructor
+function printMetadata(target: typeof Plane) {
+  // loop through all keys (methods) in the class
+  for (let key in target.prototype) {
+    // tries to find Class.prototype.key.secret metadata key
+    const secret = Reflect.getMetadata('secret', target.prototype, key);
+    console.log(secret)
+  }
 }
 
 const secret = Reflect.getMetadata('secret', Plane.prototype, 'fly')
