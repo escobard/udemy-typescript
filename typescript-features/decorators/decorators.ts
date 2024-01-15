@@ -6,6 +6,7 @@ class Boat {
   }
 
   // syntax for declarator function definition
+  /// requires experimentalDecorators & emitDecoratorMetadata TS options enabled
   @testDecorator
   pilot(): void {
     console.log('swish');

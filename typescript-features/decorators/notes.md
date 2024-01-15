@@ -3,3 +3,4 @@
 - ts decorators are not the same as js decorators
 - used inside of classes only
 - understanding the order in which decorators are ran is key to understanding them
+- ts declarators require experimentalDecorators & emitDecoratorMetadata TS options enabled
