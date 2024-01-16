@@ -16,7 +16,7 @@ export function controller(routePrefix: string) {
 
       const path = Reflect.getMetadata(MetadataKeys.path, target.prototype, key);
       const method: Methods = Reflect.getMetadata(MetadataKeys.method, target.prototype, key);
-      const middlewares = Reflect.getMetadata(MetadataKeys.middleware, target, key)|| [];
+      const middlewares = Reflect.getMetadata(MetadataKeys.middleware, target.prototype, key)|| [];
 
       // checks to see if the method key has the path metadata key
       if (path) {
