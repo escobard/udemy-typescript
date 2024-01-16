@@ -8,7 +8,6 @@ export function use(middleware: RequestHandler){
     const middlewares = Reflect.getMetadata(MetadataKeys.middleware, target, key) || [];
     // adds middleware to available middlewares & saves new middlewares data
     Reflect.defineMetadata(MetadataKeys.middleware, [...middlewares, middleware], target, key)
-
   }
 
 
