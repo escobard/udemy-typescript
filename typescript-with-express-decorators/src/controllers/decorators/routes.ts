@@ -1,4 +1,5 @@
 import 'reflect-metadata';
+import { Methods } from "./Methods";
 
 // decorator factory for get paths
 /// variable decorator factory, wrapped one more function scope, allows us to dynamically define method type for the declarator
@@ -14,7 +15,7 @@ function routeBinder(method: string) {
 }
 
 // binds method / creates metadata for each HTTP request method
-export const get = routeBinder('get');
-export const post = routeBinder('post');
-export const put = routeBinder('put');
-export const del = routeBinder('delete');
+export const get = routeBinder(Methods.get);
+export const post = routeBinder(Methods.post);
+export const put = routeBinder(Methods.post);
+export const del = routeBinder(Methods.del);
