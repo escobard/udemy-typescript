@@ -1,8 +1,9 @@
 import { NextFunction, Request, Response } from "express";
 
-import { get } from './decorators/routes';
+import { get, post } from './decorators/routes';
 import { controller } from "./decorators/controller";
 import { use } from "./decorators/use";
+import { bodyValidator } from "./decorators/bodyValidator";
 
 
 function logger(req: Request, res: Response, next: NextFunction){
@@ -33,5 +34,22 @@ export class LoginController {
           <button>Submit</button>
       </form>
     `);
+  };
+
+  @post('/login')
+  @bodyValidator('email', 'password')
+  postLogin(req: Request, res: Response) {
+    const { email, password } = req.body;
+
+    if (email && password && email ==='hi@hi.com' && password ==='password'){
+      req.session = { loggedIn: true}
+
+      // redirect them to the root route
+      res.redirect('/')
+    } else {
+      res.status(422);
+      res.send('You must provide an email and a password');
+    }
+
   };
 }
