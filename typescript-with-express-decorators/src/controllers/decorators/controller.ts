@@ -24,7 +24,6 @@ function bodyValidators(keys: string): RequestHandler {
 }
 
 export function controller(routePrefix: string) {
-  // applies generic Function type to target, which expects the constructor property of a class
   return function(target: Function): void {
 
     // calls express router instance from AppRouter class
