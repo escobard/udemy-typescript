@@ -1,6 +1,7 @@
 import 'reflect-metadata';
 import { AppRouter } from "../../AppRouter";
 import { Methods } from "./Methods";
+import { MetadataKeys } from "./MetadataKeys";
 
 export function controller(routePrefix: string) {
   // applies generic Function type to target, which expects the constructor property of a class
@@ -14,9 +15,9 @@ export function controller(routePrefix: string) {
       const routeHandler = target.prototype[key];
 
       // tries to see if method key has the path metadata key
-      const path = Reflect.getMetadata('path', target.prototype, key);
+      const path = Reflect.getMetadata(MetadataKeys.path, target.prototype, key);
       // tries to see if method key has the method metadata key
-      const method: Methods = Reflect.getMetadata('method', target.prototype, key)
+      const method: Methods = Reflect.getMetadata(MetadataKeys.method, target.prototype, key)
 
       // checks to see if the method key has the path metadata key
       if (path) {
