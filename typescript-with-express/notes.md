@@ -6,9 +6,16 @@
 
 ## three approaches to integrating ts with js libraries
 1. use lib normally, adding in basic type annotations where possible:
-   - this is how I have seen TS used mostly!!! half ass way of leveraging TS
-   - mostly defines functional parameters and return types
-   - does not leverage types from the library, often have to define custom types to get the lib to work
+   - instructor recommends to stick to this approach unless:
+     - approach #2 can be trusted (as is and over time) and significantly enhances dev experience or type safety with minimal effort
+     - approach #3:
+       - requires significant amount of effort, maintenance and documentation,
+       - if approach #2 cannot be trusted / is not ideal for the use case
+       - significantly enhances dev experience or type safety with minimal effort
+   - aside:
+      - this is how I have seen TS used mostly!!! half ass way of leveraging TS
+      - mostly defines functional parameters and return types
+      - does not leverage types from the library, often have to define custom types to get the lib to work
 2. use TS adapter library that has helpers for using your lib with TS
    - type-graphql is a great example of this
    - with express, ts-express-decorators exist to facilitate express and ts integration

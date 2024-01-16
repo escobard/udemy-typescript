@@ -1,0 +1,13 @@
+# TS metadata
+- a proposed feature to be added to js (not just TS)
+    - experimental in nature, but been around so far
+- a snippet of info that can be tied to a method, property or class definition
+- can be used for super custom stuff
+- typescript will (optionally) provide type information as metadata
+- read and written using the reflect-metadata package
+- can create a small hidden object within a data ts object
+- is an additional object (with content) that can be attached to objects or object keys and act independently
+  - for example:
+    - colors:{ color: red }
+    - can define metadata {'some data'} to colors.color === red.
+    - can get metadata under colors.color === red
