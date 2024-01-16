@@ -7,8 +7,10 @@ import { controller } from "./decorators/controller";
 @controller('/auth')
 export class LoginController {
 
-  // we want to create a decorator that passes the route's pass to the method
+  // we want to create a decorator that passes the route's path to the method
   @get('/login')
+  // we might want to add middlewares to each of our routes in the future, can leverage decorators
+  // @use(middleware)
   getLogin(req: Request, res: Response): void {
     res.send(`
       <form method="POST">
