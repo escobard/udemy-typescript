@@ -8,18 +8,8 @@ const root = ReactDom.createRoot(el!)
 interface AppProps {
   color: string;
 }
-
-interface AppState {
-  counter: number;
-}
-
-class App extends React.Component<AppProps, AppState> {
-  constructor(props: AppProps){
-    super(props);
-
-    // this.state has a Readonly<{}> type - it's not possible to change the type of the variable called state with TS and React
-    this.state = { counter: 0}
-  }
+class App extends React.Component<AppProps> {
+  state = { counter: 0 }
 
   onIncrement = (): void => {
     this.setState({counter: this.state.counter + 1});
