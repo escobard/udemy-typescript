@@ -9,6 +9,9 @@ interface AppProps {
   color: string;
 }
 class App extends React.Component<AppProps> {
+  // this is a simplified way of defining state in React classes
+  /// this approach overrides the React type definition for AppProps, avoiding the need to define a ts interface
+  //// it is good practice to pick on approach over the other, I prefer the interface approach for better readability
   state = { counter: 0 }
 
   onIncrement = (): void => {
