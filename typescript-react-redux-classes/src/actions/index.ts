@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {Dispatch, UnknownAction} from "redux";
+import { Dispatch, UnknownAction } from "redux";
 import { ActionTypes } from "./types";
 
 export interface Todo {
@@ -19,8 +19,9 @@ export interface FetchTodosAction extends UnknownAction {
 const url = 'https://jsonplaceholder.typicode.com/todos';
 
 // sample redux thunk action with ts
-export const fetchTodos = () =>  () => {
+export const fetchTodos = () => {
   return async (dispatch: Dispatch) => {
+    console.log('triggered')
     // example of how to define returned type annotations for axios.get
     const response = await axios.get<Todo[]>(url);
 
